@@ -18,7 +18,7 @@
       </div>
       <p style="color: #c60000">{{errorMessage}}</p>
       <ion-button expand="block" (click)="login()">Se connecter</ion-button>
-     <!-- <ion-router-link href="/signup" class="note">Pas encore inscrit ?</ion-router-link> -->
+      <a [routerLink]="['signup']" class="note">Pas encore inscrit ?</a>
     </form>
   </div>
 </ion-content>
