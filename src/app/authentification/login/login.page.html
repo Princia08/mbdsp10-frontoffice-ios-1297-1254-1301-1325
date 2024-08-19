@@ -1,0 +1,25 @@
+<ion-content>
+  <div class="container">
+    <form [formGroup]="userForm" class="form_container">
+      <div class="logo_container">
+        <ion-img src="assets/img/exchange-logo.png"></ion-img>
+      </div>
+      <div class="title_container">
+        <p class="title">Connectes-toi avec ton compte !</p>
+        <span class="subtitle">Utilises ton adresse email et ton mot de passe</span>
+      </div>
+      <div class="input_container">
+        <ion-label position="floating" class="input_label">Adresse email</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="mail@gmail.com"></ion-input>
+      </div>
+      <div class="input_container">
+        <ion-label position="floating" class="input_label">Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="Entrez votre mot de passe"></ion-input>
+      </div>
+      <p style="color: #c60000">{{errorMessage}}</p>
+      <ion-button expand="block" (click)="login()">Se connecter</ion-button>
+     <!-- <ion-router-link href="/signup" class="note">Pas encore inscrit ?</ion-router-link> -->
+    </form>
+  </div>
+</ion-content>
+
