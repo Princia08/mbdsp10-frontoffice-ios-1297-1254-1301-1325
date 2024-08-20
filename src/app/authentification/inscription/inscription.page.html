@@ -1,13 +1,66 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>inscription</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="row">
+      <ion-col size-md="4" size-sm="12">
+        <form class="form_container" [formGroup]="userForm">
+          <div class="logo_container">
+            <img src="assets/img/exchange-logo.png" width="100%" />
+          </div>
+          <div class="title_container">
+            <p class="title">Inscris-toi pour pouvoir se connecter !</p>
+          </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inscription</ion-title>
-    </ion-toolbar>
-  </ion-header>
+          <ion-item class="input_container">
+            <ion-label position="floating">Nom</ion-label>
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            <ion-input
+              placeholder="Entrez votre nom"
+              type="text"
+              formControlName="username"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item class="input_container">
+            <ion-label position="floating">Adresse email</ion-label>
+            <ion-icon slot="start" name="mail-outline"></ion-icon>
+            <ion-input
+              placeholder="mail@gmail.com"
+              type="email"
+              formControlName="email"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item class="input_container">
+            <ion-label position="floating">Mot de passe</ion-label>
+            <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+            <ion-input
+              placeholder="Entrez votre mot de passe"
+              type="password"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item class="input_container">
+            <ion-label position="floating">Adresse</ion-label>
+            <ion-icon slot="start" name="home-outline"></ion-icon>
+            <ion-input
+              placeholder="Entrez votre adresse"
+              type="text"
+              formControlName="address"
+            ></ion-input>
+          </ion-item>
+
+          <p style="color: #c60000">{{ errorMessage }}</p>
+
+          <ion-button expand="block" (click)="signup()">S'inscrire</ion-button>
+
+          <ion-text color="medium">
+            <p class="note">
+              <a href="/">Déjà inscrit ?</a>
+            </p>
+          </ion-text>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
