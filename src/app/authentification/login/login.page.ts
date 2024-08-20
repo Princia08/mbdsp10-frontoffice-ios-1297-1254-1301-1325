@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,19 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginPage {
 
-  userForm: FormGroup;
+  constructor(private router: Router) {}
+
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder) {
-    this.userForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+  userForm = new FormGroup({
+    email: new FormControl('perdo-alvarez@it-univerisity.mg', [Validators.required]),
+    password: new FormControl('motdepasse', [Validators.required])
+  })
 
   login() {
     if (this.userForm.valid) {
       // Logique de connexion
+      this.router.navigateByUrl('/tabs/tab1');
     } else {
       this.errorMessage = 'Veuillez remplir tous les champs';
     }

@@ -4,10 +4,10 @@ import {LoginPage} from "./authentification/login/login.page";
 import {InscriptionPage} from "./authentification/inscription/inscription.page";
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // },
+   {
+     path: 'tabs',
+     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+   },
 
   { path: '', component: LoginPage },
   { path: 'signup',
