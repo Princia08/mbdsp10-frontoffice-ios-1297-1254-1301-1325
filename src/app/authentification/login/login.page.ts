@@ -23,7 +23,7 @@ export class LoginPage {
   login() {
     if (this.userForm.valid) {
       // Logique de connexion
-      this.router.navigateByUrl('/tabs/tab1');
+      this.router.navigateByUrl('/home/produit');
       this.userService.login(this.userForm.value).subscribe({
         next: res => {
           this.authService.logIn(res.data.access_token)

@@ -12,8 +12,15 @@ const routes: Routes = [
   { path: '', component: LoginPage },
   { path: 'signup',
     loadChildren: () => import('./authentification/inscription/inscription.module').then(m => m.InscriptionPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'produit',
+    loadChildren: () => import('./pages/produit/produit.module').then( m => m.ProduitPageModule)
   }
-
 ];
 @NgModule({
   imports: [
