@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <img src="assets/img/produits/haltere.png" alt="haltere" />
+      <div class="product">
+        <div class="product-title">Haltere</div>
+        <hr class="product-line" />
+        <div class="product-description" style="color: white">
+          Equipement de musculation constitué d'une barre courte, généralement en métal, avec des poids fixés à chaque extrémité. Il est utilisé pour effectuer une variété d'exercices de renforcement musculaire...
+        </div>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start" style="margin-top: 15px;">
+            <img src="assets/img/produits/person.png" alt="John Doe" />
+          </ion-avatar>
+          <ion-label style="margin-top: 20px;">John Doe</ion-label>
+        </ion-item>
+        <ion-row style="margin-top: 15px;">
+          <ion-col>
+            <ion-button expand="block" color="primary" (click)="seeDetails(id)">Modifier</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" color="danger">Supprimer</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>
