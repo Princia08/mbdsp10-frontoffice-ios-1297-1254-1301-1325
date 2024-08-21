@@ -1,13 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>produit</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">produit</ion-title>
+      <ion-buttons slot="end">
+        <ion-button color="primary" (click)="router.navigateByUrl('/home/addProduit')">
+          Ajouter
+        </ion-button>
+        <ion-button color="success">
+          Mes produits
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let item of items">
+        <ion-card>
+          <ion-img [src]="item.imageSrc"></ion-img>
+          <ion-card-content>
+            <ion-button fill="outline" color="primary" expand="block" (click)="seeDetails(item.id)">
+              Voir détails
+            </ion-button>
+            <div class="details">
+              <p class="title">{{ item.title }}</p>
+              <ion-label>{{ item.owner }}</ion-label>
+              <ion-label> · </ion-label>
+              <ion-label>{{ item.date }}</ion-label>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
