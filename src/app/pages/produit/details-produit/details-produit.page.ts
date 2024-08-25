@@ -98,7 +98,7 @@ export class DetailsProduitPage implements OnInit{
   }
 
   cancel() {
-    this.router.navigate(['/home/produits']);
+    this.router.navigate(['/home/produit']);
   }
 
   confirm() {
@@ -112,7 +112,7 @@ export class DetailsProduitPage implements OnInit{
 
     this.exchangeService.createExchange(exchange).subscribe({
       next: res => {
-        this.router.navigate(['/home/produits']);
+        this.router.navigate(['/home/produit']);
       },
       error: err => {
         console.log(err);

@@ -37,15 +37,16 @@
         <ion-col size="9">
           <h5 style="text-align: center">Sélectionner parmi les produits de {{ product.actual_owner.username }} ceux dont vous vouliez échanger</h5>
           <ion-grid>
-            <ion-row *ngFor="let product of listProducts; trackBy: product.id">
+            <ion-row *ngFor="let product of listProducts;">
               <ion-col size="12">
                 <ion-card>
-                  <ion-checkbox slot="start" [value]="product.id" (ionChange)="onCheckboxChange($event, product.id, product.actual_owner.id)"></ion-checkbox>
-                  <ion-img [src]="product.product_image"></ion-img>
-                  <ion-card-content>
-                    <p class="title">{{ product.product_name }}</p>
-                    <p>{{ product.actual_owner.username }} . {{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</p>
-                  </ion-card-content>
+                    <ion-item lines="none">
+                    <ion-checkbox slot="start" [value]="product.id" (ionChange)="onCheckboxChange($event, product.id, product.actual_owner.id)"></ion-checkbox>
+                    <ion-card-content>
+                      <p class="title">{{ product.product_name }}</p>
+                      <p>{{ product.actual_owner.username }} . {{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</p>
+                    </ion-card-content>
+                  </ion-item>
                 </ion-card>
               </ion-col>
             </ion-row>
@@ -61,15 +62,16 @@
         <ion-col size="9">
           <h5 style="text-align: center">Sélectionner parmi vos produits ceux dont vous vouliez échanger</h5>
           <ion-grid>
-            <ion-row *ngFor="let product of listMyProducts; trackBy: product.id">
+            <ion-row *ngFor="let product of listMyProducts;">
               <ion-col size="12">
                 <ion-card>
+                  <ion-item lines="none">
                   <ion-checkbox slot="start" [value]="product.id" (ionChange)="onCheckboxChangeMyProduct($event, product.id)"></ion-checkbox>
-                  <ion-img [src]="product.product_image"></ion-img>
                   <ion-card-content>
                     <p class="title">{{ product.product_name }}</p>
                     <p>{{ product.actual_owner.username }} . {{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</p>
                   </ion-card-content>
+                  </ion-item>
                 </ion-card>
               </ion-col>
             </ion-row>
