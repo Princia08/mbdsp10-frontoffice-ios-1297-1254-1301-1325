@@ -2,7 +2,7 @@
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button color="primary" (click)="router.navigateByUrl('/home/addProduit')">
+        <ion-button color="primary" (click)="addProduct()">
           Ajouter
         </ion-button>
         <ion-button color="success">
@@ -14,18 +14,18 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let item of items">
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let product of products">
         <ion-card>
-          <ion-img [src]="item.imageSrc"></ion-img>
+          <ion-img [src]="product.product_image"></ion-img>
           <ion-card-content>
-            <ion-button fill="outline" color="primary" expand="block" (click)="seeDetails(item.id)">
+            <ion-button fill="outline" color="primary" expand="block" (click)="seeDetails(product.id)">
               Voir détails
             </ion-button>
             <div class="details">
-              <p class="title">{{ item.title }}</p>
-              <ion-label>{{ item.owner }}</ion-label>
+              <p class="title">{{ product.product_name }}</p>
+              <ion-label>{{ product.actual_owner.username }}</ion-label>
               <ion-label> · </ion-label>
-              <ion-label>{{ item.date }}</ion-label>
+              <ion-label>{{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</ion-label>
             </div>
           </ion-card-content>
         </ion-card>
