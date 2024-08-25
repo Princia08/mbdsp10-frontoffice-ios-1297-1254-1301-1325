@@ -1,28 +1,93 @@
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-align-items-center ion-justify-content-center">
-      <img src="assets/img/produits/haltere.png" alt="haltere" />
-      <div class="product">
-        <div class="product-title">Haltere</div>
-        <hr class="product-line" />
-        <div class="product-description">
-          Equipement de musculation constitué d'une barre courte, généralement en métal, avec des poids fixés à chaque extrémité. Il est utilisé pour effectuer une variété d'exercices de renforcement musculaire...
-        </div>
-        <ion-item lines="none" class="ion-no-padding">
-          <ion-avatar slot="start" style="margin-top: 15px;">
-            <img src="assets/img/produits/person.png" alt="John Doe" />
-          </ion-avatar>
-          <ion-label style="margin-top: 20px;">John Doe</ion-label>
-        </ion-item>
-        <ion-row style="margin-top: 15px;">
-          <ion-col>
-            <ion-button expand="block" color="primary" (click)="seeDetails(id)">Modifier</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button expand="block" color="danger">Supprimer</ion-button>
-          </ion-col>
-        </ion-row>
-      </div>
-    </ion-row>
+    <!-- Display if the product is not part of the listProducts -->
+    <ng-container *ngIf="!listProducts">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="5" class="ion-padding" style="background: #e8e8e8; margin-right: 15px;">
+          <img src="{{ product.product_image }}" alt="{{ product.product_name }}" />
+        </ion-col>
+          <div class="product">
+            <div class="product-title">{{ product.product_name }}</div>
+            <hr class="product-line" />
+            <div class="product-description">{{ product.description }}</div>
+            <ion-item lines="none" class="ion-no-padding" style="display: inline-flex;">
+              <ion-avatar slot="start" style="margin-top: 15px;">
+                <img src="assets/img/produits/person.png" alt="{{ product.actual_owner.username }}" />
+              </ion-avatar>
+              <ion-label style="margin-top: 20px;">{{ product.actual_owner.username }}</ion-label>
+            </ion-item>
+            <ion-row style="margin-top: 15px;">
+              <ion-col *ngIf="isMyProduct">
+                <ion-button expand="block" color="primary" (click)="updateProduct(id)">Modifier</ion-button>
+              </ion-col>
+              <ion-col *ngIf="isMyProduct">
+                <ion-button expand="block" color="danger">Supprimer</ion-button>
+              </ion-col>
+              <ion-col *ngIf="!isMyProduct">
+                <ion-button expand="block" color="primary" (click)="exchange(product.actual_owner.id)">Echanger</ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+      </ion-row>
+    </ng-container>
+
+    <!-- Display if listProducts is true and listMyProducts is false -->
+    <ng-container *ngIf="listProducts && !listMyProducts">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="9">
+          <h5 style="text-align: center">Sélectionner parmi les produits de {{ product.actual_owner.username }} ceux dont vous vouliez échanger</h5>
+          <ion-grid>
+            <ion-row *ngFor="let product of listProducts; trackBy: product.id">
+              <ion-col size="12">
+                <ion-card>
+                  <ion-checkbox slot="start" [value]="product.id" (ionChange)="onCheckboxChange($event, product.id, product.actual_owner.id)"></ion-checkbox>
+                  <ion-img [src]="product.product_image"></ion-img>
+                  <ion-card-content>
+                    <p class="title">{{ product.product_name }}</p>
+                    <p>{{ product.actual_owner.username }} . {{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-button expand="block" color="primary" style="margin-top: 38px;" (click)="chooseMyProduct()">Continuer</ion-button>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+
+    <!-- Display if listMyProducts is true -->
+    <ng-container *ngIf="listMyProducts">
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="9">
+          <h5 style="text-align: center">Sélectionner parmi vos produits ceux dont vous vouliez échanger</h5>
+          <ion-grid>
+            <ion-row *ngFor="let product of listMyProducts; trackBy: product.id">
+              <ion-col size="12">
+                <ion-card>
+                  <ion-checkbox slot="start" [value]="product.id" (ionChange)="onCheckboxChangeMyProduct($event, product.id)"></ion-checkbox>
+                  <ion-img [src]="product.product_image"></ion-img>
+                  <ion-card-content>
+                    <p class="title">{{ product.product_name }}</p>
+                    <p>{{ product.actual_owner.username }} . {{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</p>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            <ion-label position="fixed">Adresse de livraison:</ion-label>
+            <ion-input [(ngModel)]="delivery_address"></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" color="danger" (click)="cancel()">Annuler</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" color="primary" (click)="confirm()">Confirmer</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ng-container>
   </ion-grid>
 </ion-content>
