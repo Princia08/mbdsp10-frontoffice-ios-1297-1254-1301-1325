@@ -11,13 +11,17 @@
         <ion-icon slot="start" name="cube-outline"></ion-icon>
         <ion-label>Produits</ion-label>
       </ion-item>
-      <ion-item routerLink="addProposition">
+      <ion-item routerLink="mes-produits">
         <ion-icon slot="start" name="sync-outline"></ion-icon>
-        <ion-label>Propositions</ion-label>
+        <ion-label>Mes produits</ion-label>
       </ion-item>
-      <ion-item routerLink="/contact">
+      <ion-item routerLink="historique">
         <ion-icon slot="start" name="document-text-outline"></ion-icon>
         <ion-label>Historique</ion-label>
+      </ion-item>
+      <ion-item button="true" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Déconnexion</ion-label>
       </ion-item>
     </ion-list>
   </ion-content>
