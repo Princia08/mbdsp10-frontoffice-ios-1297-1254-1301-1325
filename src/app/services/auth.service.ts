@@ -15,7 +15,7 @@ export class AuthService {
     // on stock le token dans le localStorage du header
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home/produit');
     this.loggedIn = true;
   }
 
