@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'mes-produits',
     loadChildren: () => import('./mes-produits/mes-produits.module').then( m => m.MesProduitsPageModule)
+  },
+  {
+    path: 'historique',
+    loadChildren: () => import('./historique/historique.module').then( m => m.HistoriquePageModule)
   }
 
 ];

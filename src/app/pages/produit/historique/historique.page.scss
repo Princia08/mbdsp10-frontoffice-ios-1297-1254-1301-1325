@@ -1,0 +1,44 @@
+.list-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.star {
+  font-size: 30px;
+  color: #FFD700;
+  cursor: pointer;
+}
+
+.modal-content {
+  padding: 20px;
+  text-align: center;
+  background-color: #3f3f3f;
+  color: white;
+}
+
+ion-badge.created {
+  background-color: #0080ff;
+}
+
+ion-badge.received {
+  background-color: #4caf50;
+}
+
+ion-badge.cancelled {
+  background-color: #9e9e9e;
+}
+
+ion-badge.accepted {
+  background-color: #ffb700;
+}
+
+ion-badge.blocked {
+  background-color: #f44336;
+}

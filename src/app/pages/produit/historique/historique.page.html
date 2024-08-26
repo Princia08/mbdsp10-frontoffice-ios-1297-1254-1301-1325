@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historique des échanges</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let exchange of exchanges">
+      <ion-card-content>
+        <p><strong>Date:</strong> {{ exchange.createdAt }}</p>
+        <p><strong>Owner:</strong> {{ exchange.owner_proposition.user.username }}</p>
+        <p><strong>Taker:</strong> {{ exchange.taker_proposition.user.username }}</p>
+        <p><strong>Owner products:</strong> {{ exchange.ownerProducts }}</p>
+        <p><strong>Taker products:</strong> {{ exchange.takerProducts }}</p>
+        <p><strong>Delivery address:</strong> {{ exchange.delivery_address }}</p>
+
+        <ion-badge [ngClass]="{
+          'created': exchange.status === 'CREATED',
+          'cancelled': exchange.status === 'CANCELLED',
+          'blocked': exchange.status === 'BLOCKED',
+          'accepted': exchange.status === 'ACCEPTED',
+          'received': exchange.status === 'RECEIVED'
+        }">
+          {{ exchange.status }}
+        </ion-badge>
+
+        <ion-button *ngIf="canAccept(exchange.owner_proposition.user_id, exchange.status)" color="danger" style="margin-left: 30px" size="small"  (click)="cancelExchange(exchange.id)">Refuser</ion-button>
+        <ion-button *ngIf="canAccept(exchange.owner_proposition.user_id, exchange.status)" color="success" style="margin-left: 10px" size="small" (click)="acceptExchange(exchange.id)">Accepter</ion-button>
+
+        <ion-button *ngIf="canReceive(exchange.status) && isOwner(exchange.owner_proposition.user_id)" color="primary" size="small" (click)="receiveExchange(exchange.id, exchange.taker_proposition.user_id)">Recevoir</ion-button>
+        <ion-button *ngIf="canReceive(exchange.status) && isTaker(exchange.taker_proposition.user_id)" color="primary" size="small" (click)="receiveExchange(exchange.id, exchange.owner_proposition.user_id)">Recevoir</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
