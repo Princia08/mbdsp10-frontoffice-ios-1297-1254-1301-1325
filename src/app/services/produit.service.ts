@@ -20,6 +20,10 @@ export class ProduitService {
     return this.http.get(this.url + '/products');
   }
 
+  deleteProduct(idProduct: string): Observable<any> {
+    return this.http.delete(this.url + '/products/' + idProduct);
+  }
+
   addProduct(product: any): Observable<any> {
     return this.http.post(this.url + '/products', product);
   }

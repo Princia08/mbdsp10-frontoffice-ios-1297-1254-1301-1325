@@ -21,7 +21,7 @@
                 <ion-button expand="block" color="primary" (click)="updateProduct(id)">Modifier</ion-button>
               </ion-col>
               <ion-col *ngIf="isMyProduct">
-                <ion-button expand="block" color="danger">Supprimer</ion-button>
+                <ion-button expand="block" color="danger" (click)="delete()" >Supprimer</ion-button>
               </ion-col>
               <ion-col *ngIf="!isMyProduct">
                 <ion-button expand="block" color="primary" (click)="exchange(product.actual_owner.id)">Echanger</ion-button>

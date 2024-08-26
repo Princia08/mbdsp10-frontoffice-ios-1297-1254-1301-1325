@@ -119,4 +119,15 @@ export class DetailsProduitPage implements OnInit{
       }
     });
   }
+
+  delete() {
+    this.produitService.deleteProduct(this.id).subscribe({
+      next: res => {
+        this.router.navigate(['/home/produit']);
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
 }
