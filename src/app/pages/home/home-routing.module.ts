@@ -19,6 +19,14 @@ const routes: Routes = [
       {
         path : 'details-produit/:id',
         loadChildren: () => import('../produit/details-produit/details-produit.module').then(p => p.DetailsProduitPageModule)
+      },
+      {
+        path : 'historique',
+        loadChildren: () => import('../produit/details-produit/details-produit.module').then(p => p.DetailsProduitPageModule)
+      },
+      {
+        path : 'mes-produits',
+        loadChildren: () => import('../produit/mes-produits/mes-produits.module').then(p => p.MesProduitsPageModule)
       }
     ]
   }

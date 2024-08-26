@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let product of products">
+        <ion-card>
+          <ion-img [src]="product.product_image"></ion-img>
+          <ion-card-content>
+            <ion-button fill="outline" color="primary" expand="block" (click)="seeDetails(product.id)">
+              Voir détails
+            </ion-button>
+            <div class="details">
+              <p class="title">{{ product.product_name }}</p>
+              <ion-label>{{ product.actual_owner.username }}</ion-label>
+              <ion-label> · </ion-label>
+              <ion-label>{{ product.createdAt | date:'dd-MM-yyyy HH:mm:ss' }}</ion-label>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

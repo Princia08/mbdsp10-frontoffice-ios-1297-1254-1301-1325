@@ -1,0 +1,31 @@
+ion-content {
+  --padding-start: 2%;
+  --padding-end: 2%;
+}
+
+.details {
+  font-size: 13px;
+  padding-bottom: 7px;
+  text-align: center;
+}
+
+.title {
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+ion-card {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+ion-img {
+  width: 80%;
+  margin: 0 auto;
+  max-height: 150px;
+  object-fit: contain;
+}
