@@ -9,7 +9,7 @@
           </div>
           <ion-item class="input_container">
             <ion-label position="floating" class="input_label">Nom</ion-label>
-            <ion-input placeholder="Nom du produit" type="text" formControlName="nom"></ion-input>
+            <ion-input placeholder="Nom du produit" type="text" formControlName="product_name"></ion-input>
           </ion-item>
           <ion-item class="input_container">
             <ion-label position="floating" class="input_label">Description</ion-label>
@@ -31,7 +31,17 @@
               </ion-row>
             </ion-grid>
           </ion-item>
-          <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="!produitForm.valid">
+
+          <!-- Checkbox Section -->
+          <ion-list class="checkbox-container">
+            <ion-label class="input_label" style="text-align: left">Catégories</ion-label>
+            <ion-item *ngFor="let categorie of categories">
+              <ion-label>{{categorie.category_name}}</ion-label>
+              <ion-checkbox slot="start" value="{{categorie.id}}" (ionChange)="onCheckboxChange($event, categorie.id)"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+
+          <ion-button expand="block" color="success" (click)="addProduct()" [disabled]="!produitForm.valid">
             Ajouter
           </ion-button>
         </form>
